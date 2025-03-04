@@ -2,7 +2,8 @@
 // const { insertCiudadano } = require('./db.js');
 
 document.addEventListener('DOMContentLoaded', function() {
-    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx-y_91vnXrIJdvJaC82Qw-_q1jLVRaCnjJ4BaX-BGW23Zzs0UJL0jwRkdR3E58QAM8yg/exec';
+    const SHEET_URL = 'TU_URL_DE_GOOGLE_SCRIPT';
+    const DEBUG = true;
     const form = document.querySelector('.cedula-form');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
@@ -10,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const fechaNacimientoInput = document.getElementById('fechaNacimiento');
     const fotoInput = document.getElementById('fotoPersonaje');
     const preview = document.getElementById('preview');
+
+    function log(message, data) {
+        if (DEBUG) {
+            console.log(`[DEBUG] ${message}:`, data);
+        }
+    }
 
     function showNotification(message, isSuccess = true) {
         const notification = document.getElementById('notification');
@@ -145,20 +152,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejador del envío del formulario
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        showNotification('Enviando datos...', true);
+        log('Iniciando envío', 'Formulario sometido');
 
         try {
-            const formData = {
-                nombres: document.getElementById('nombres').value,
-                apellidos: document.getElementById('apellidos').value,
-                nacionalidad: document.getElementById('nacionalidad').value,
-                fechaNacimiento: fechaNacimientoInput.value,
-                lugarNacimiento: document.getElementById('lugarNacimiento').value,
-                sexo: document.getElementById('sexo').value,
-                discordUser: discordUserInput.value,
-                password: passwordInput.value,
-                timestamp: new Date().toISOString()
-            };
+            const formData = new FormData(form);
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            log('Datos preparados', jsonData);
+            showNotification('Enviando datos...', true);
 
             const response = await fetch(SHEET_URL, {
                 method: 'POST',
@@ -166,20 +170,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(jsonData)
             });
 
-            showNotification('✅ Registro completado exitosamente', true);
+            log('Respuesta recibida', 'Esperando confirmación');
             
-            // Esperar 2 segundos antes de redireccionar
+            // Esperar 5 segundos para dar tiempo a Google Sheets
             setTimeout(() => {
-                form.reset();
-                window.location.href = 'index.html';
-            }, 2000);
+                showNotification('✅ Datos enviados. Verifica en la hoja de cálculo.', true);
+                log('Proceso completado', 'Redirigiendo...');
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 5000);
 
         } catch (error) {
-            console.error('Error:', error);
-            showNotification('❌ Error al registrar. Por favor, intenta nuevamente.', false);
+            console.error('Error en el envío:', error);
+            showNotification('❌ Error: ' + error.message, false);
+            log('Error detectado', error);
         }
     });
 
