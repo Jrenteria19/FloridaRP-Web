@@ -2,7 +2,7 @@
 // const { insertCiudadano } = require('./db.js');
 
 document.addEventListener('DOMContentLoaded', function() {
-    const SHEET_URL = 'TU_URL_DE_GOOGLE_SCRIPT';
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx-y_91vnXrIJdvJaC82Qw-_q1jLVRaCnjJ4BaX-BGW23Zzs0UJL0jwRkdR3E58QAM8yg/exec';
     const DEBUG = true;
     const form = document.querySelector('.cedula-form');
     const passwordInput = document.getElementById('password');
