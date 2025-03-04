@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia - FloridaRP</title>
+    <link rel="icon" href="imgs\FloridaRp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <body>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="codigopenal.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Código Penal</span>
+                </a>
+                <a href="agencia.html" class="nav-link">
+                    <i class="fas fa-car"></i>
+                    <span>Agencia</span>
+                </a>
+                <a href="normativas.html" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>Normativas</span>
+                </a>
+                <a href="https://discord.gg/vUVZqpyYkb" class="nav-link discord-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>Quieres Unirte?</span>
+                </a>
+            </div>
+        </nav>
+    <br>
+    <br>
+    <section class="hero small-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>AGENCIA DE VEHÍCULOS</h1>
+                <p>Encuentra tu vehículo ideal en FloridaRP</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido de la Agencia -->
+    <section class="agencia-page">
+        <div class="container">
+            <!-- Buscador -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchVehicles" placeholder="Buscar vehículos...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Todos</button>
+                    <button class="filter-btn" data-category="baja">Gama Baja</button>
+                    <button class="filter-btn" data-category="media">Gama Media</button>
+                    <button class="filter-btn" data-category="alta">Gama Alta</button>
+                </div>
+            </div>
+
+            <!-- Grid de Vehículos -->
+            <div class="vehicles-grid">
+                <!-- Los vehículos se generarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <script src="js/agencia.js"></script>
+</body>
+</html>

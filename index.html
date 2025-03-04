@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#9c27b0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>FloridaRP</title>
+    <link rel="icon" href="./images/FloridaRp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/registro.js"></script>
+    <script src="./js/auth.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="codigopenal.html" class="nav-link">
+                <i class="fas fa-gavel"></i>
+                <span>Código Penal</span>
+            </a>
+            <a href="agencia.html" class="nav-link">
+                <i class="fas fa-car"></i>
+                <span>Agencia</span>
+            </a>
+            <a href="normativas.html" class="nav-link">
+                <i class="fas fa-book"></i>
+                <span>Normativas</span>
+            </a>
+            <a href="https://discord.gg/vUVZqpyYkb" class="nav-link discord-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Quieres Unirte?</span>
+            </a>
+            <div class="auth-buttons">
+                <a href="#" class="nav-link login-link" id="loginBtn">
+                    <i class="fas fa-user"></i>
+                    <span>Iniciar Sesión</span>
+                </a>
+                <a href="registro.html" class="nav-link register-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Registrarse</span>
+                </a>
+                <!-- Se eliminó el botón de Admin -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Florida RP</h1>
+                <h2>VC Opcional</h2>
+                <br>
+                <p>¡Bienvenido a FloridaRP! 🚔 Un servidor de rol dentro de Emergency Response: 
+                    Liberty County, donde la diversión y el realismo van de la mano. ¿Buscas un rol organizado, serio 
+                    y emocionante? ¡Este es tu lugar! 🌟</p>
+                <div class="hero-buttons">
+                    <a href="#quienes-somos" class="btn btn-primary">Explorar</a>
+                    <a href="https://discord.gg/vUVZqpyYkb" class="btn btn-secondary">Unirse al Discord</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="imgs\FloridaRp.png" alt="STGRP Logo">
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="section">
+        <div class="container">
+            <h2 class="section-title">💎 Paquetes VIP y Boosters</h2>
+            <div class="grid">
+                <!-- VIP GUATÓN PARRILLERO -->
+                <div class="vip-card">
+                    <div class="vip-icon"><i class="fas fa-crown"></i></div>
+                    <h3 class="card-title">VIP "Guatón Parrillero"</h3>
+                    <div class="price-tag">
+                        <span class="robux-price">1000 R$ (MXN $250)</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Rol exclusivo VIP</li>
+                        <li>Acceso a chat privado con los creadores</li>
+                        <li>$10,000,000 IC</li>
+                        <li>Triple ganancia en robos</li>
+                        <li>Todas las licencias disponibles</li>
+                        <li>Beneficios en facciones legales e ilegales</li>
+                        <li>Auto de lujo exclusivo</li>
+                        <li>Duración: 1 mes</li>
+                    </ul>
+                    <a href="https://www.roblox.com/es/game-pass/1087378222/VIP-Guat-n-Parrillero" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar VIP Guatón
+                    </a>
+                </div>
+
+                <!-- VIP SIPO PREMIUM -->
+                <div class="vip-card">
+                    <div class="vip-icon"><i class="fas fa-star"></i></div>
+                    <h3 class="card-title">VIP "Sipo Premium"</h3>
+                    <div class="price-tag">
+                        <span class="robux-price">550 R$ (MXN $150)</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Rol exclusivo VIP</li>
+                        <li>$6,000,000 IC</li>
+                        <li>Duplicación del dinero en robos</li>
+                        <li>Acceso anticipado a nuevo contenido</li>
+                        <li>Licencias ilimitadas</li>
+                        <li>20% de descuento en locales y propiedades</li>
+                    </ul>
+                    <a href="https://www.roblox.com/es/game-pass/1087312246/VIP-Sipo-Premium" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar VIP Sipo
+                    </a>
+                </div>
+
+                <!-- VIP CABRO BUENA ONDA -->
+                <div class="vip-card">
+                    <div class="vip-icon"><i class="fas fa-medal"></i></div>
+                    <h3 class="card-title">VIP "El Cabro Buena Onda"</h3>
+                    <div class="price-tag">
+                        <span class="robux-price">250 R$ (MXN 100)</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Rol exclusivo VIP</li>
+                        <li>$2,000,000 IC</li>
+                        <li>Registro de Auto Alta Gama Gratis</li>
+                        <li>Doble salario en trabajos legales</li>
+                        <li>Acceso a bandas criminales</li>
+                    </ul>
+                    <a href="https://www.roblox.com/es/game-pass/1088078282/VIP-El-Cabro-Buena-Onda" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar VIP Cabro
+                    </a>
+                </div>
+
+                <!-- BOOST 1 -->
+                <div class="boost-card">
+                    <div class="boost-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="card-title">Boost 1</h3>
+                    <div class="price-tag discord">
+                        <i class="fab fa-discord"></i>
+                        <span class="boost-price">Discord Nitro</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Rol Server Booster 1</li>
+                        <li>$1,000,000 IC</li>
+                        <li>Auto exclusivo de 20M</li>
+                        <li>50% de descuento en propiedades</li>
+                        <li>Licencia a elección</li>
+                    </ul>
+                </div>
+
+                <!-- BOOST 2 -->
+                <div class="boost-card">
+                    <div class="boost-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="card-title">Boost 2</h3>
+                    <div class="price-tag discord">
+                        <i class="fab fa-discord"></i>
+                        <span class="boost-price">Discord Nitro</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Todo lo del Boost 1</li>
+                        <li>$2,000,000 IC</li>
+                        <li>Duplicación de ganancias en robos</li>
+                        <li>Permiso para tener 2 trabajos principales</li>
+                        <li>Chat exclusivo para donadores</li>
+                    </ul>
+                </div>
+
+                <!-- Segundo PJ -->
+                <div class="boost-card">
+                    <div class="boost-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="card-title">Segundo Personaje (PJ2)</h3>
+                    <div class="price-tag">
+                        <span class="robux-price">80 R$ (MXN $80)</span>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Posibilidad de tener dos personajes diferentes</li>
+                        <li>Historias y roles paralelos</li>
+                        <li>Experiencia de rol más variada</li>
+                        <li>Acceso a nuevas facciones sin afectar tu PJ principal</li>
+                    </ul>
+                    <a href="https://www.roblox.com/es/game-pass/1087552039/2Do-PJ" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Obtener Segundo PJ
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <p>⚠️ Beneficios sujetos a cambios. Mantente atento a los avisos oficiales. Abrir ticket siempre antes de hacerlo.</p>
+                <a href="https://discord.gg/vUVZqpyYkb" class="btn btn-secondary">Unirse al Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="quienes-somos" class="section">
+    <div class="container">
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        <div class="intro-content">
+            <div class="intro-text-wrapper">
+                <div class="welcome-banner">
+                    <div class="banner-icon">🚔</div>
+                    <h3>Bienvenido a FloridaRP</h3>
+                    <p>Un servidor de rol dentro de <em>Emergency Response: Liberty County</em>, donde la diversión y el realismo van de la mano.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <!-- Chat de Voz -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🎤</div>
+                        <h4>VC Opcional</h4>
+                        <p>¡Tú eliges! Juega con o sin chat de voz, la diversión está garantizada.</p>
+                    </div>
+
+                    <!-- Comunidad -->
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h4>Comunidad Activa</h4>
+                        <p>Más de 1000 jugadores activos y staff dedicado 24/7.</p>
+                    </div>
+
+                    <!-- Eventos -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h4>Eventos Diarios</h4>
+                        <p>Participa en eventos especiales y gana recompensas únicas.</p>
+                    </div>
+
+                    <!-- Economía -->
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4>Economía Balanceada</h4>
+                        <p>Sistema económico justo y dinámico para todos.</p>
+                    </div>
+                </div>
+
+                <!-- Facciones -->
+                <div class="factions-showcase">
+                    <h3><i class="fas fa-shield-alt"></i> Facciones Disponibles</h3>
+                    <div class="factions-grid">
+                        <div class="faction-card legal">
+                            <h4>Fuerzas del Orden</h4>
+                            <ul>
+                                <li><i class="fas fa-user-shield"></i> PDI Chile</li>
+                                <li><i class="fas fa-car-side"></i> Carabineros de Chile</li>
+                                <li><i class="fas fa-helicopter"></i> ISA</li>
+                            </ul>
+                        </div>
+                        <div class="faction-card emergency">
+                            <h4>Servicios de Emergencia</h4>
+                            <ul>
+                                <li><i class="fas fa-fire-extinguisher"></i> Bomberos</li>
+                                <li><i class="fas fa-ambulance"></i> SAMU</li>
+                            </ul>
+                        </div>
+                        <div class="faction-card civilian">
+                            <h4>Civiles</h4>
+                            <ul>
+                                <li><i class="fas fa-briefcase"></i> Trabajos Legales</li>
+                                <li><i class="fas fa-mask"></i> Actividades Ilegales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="quick-links">
+                    <h3><i class="fas fa-link"></i> Enlaces Rápidos</h3>
+                    <div class="links-grid">
+                        <a href="https://discord.gg/vUVZqpyYkb" class="quick-link discord">
+                            <i class="fab fa-discord"></i>
+                            <span>Discord Oficial</span>
+                        </a>
+                        <a href="https://policeroleplay.community/join?code=CHFLR" class="quick-link rules">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Servidor ER:LC</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@almightystudios2" class="quick-link tiktok">
+                            <i class="fab fa-tiktok"></i>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Nuevo: Sección Cómo Jugar -->
+    <section id="como-jugar" class="section">
+        <div class="container">
+            <h2 class="section-title">¿Cómo Unirte a FloridaRP?</h2>
+            <div class="grid">
+                <div class="card guide-card">
+                    <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="card-title">Paso 1: Únete al Servidor</h3>
+                    <ul class="steps-list">
+                        <li><i class="fas fa-check"></i> Ingresa a Emergency Response: Liberty County</li>
+                        <li><i class="fas fa-search"></i> Usa el código "CHFLR" en el buscador</li>
+                        <li><i class="fas fa-star"></i> O busca "FloridaRP" en los servidores</li>
+                        <li><i class="fas fa-users"></i> ¡Únete y comienza tu aventura!</li>
+                    </ul>
+                    <a href="https://policeroleplay.community/join?code=CHFLR" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-sign-in-alt"></i> Unirse al Servidor
+                    </a>
+                </div>
+
+                <div class="card guide-card">
+                    <div class="card-icon"><i class="fab fa-discord"></i></div>
+                    <h3 class="card-title">Paso 2: Discord (Recomendado)</h3>
+                    <ul class="steps-list">
+                        <li><i class="fas fa-door-open"></i> Únete a nuestro Discord</li>
+                        <li><i class="fas fa-user-check"></i> Verifica tu cuenta</li>
+                        <li><i class="fas fa-bell"></i> Revisa si el servidor está abierto</li>
+                        <li><i class="fas fa-book"></i> Lee las normativas básicas</li>
+                    </ul>
+                    <a href="https://discord.gg/vUVZqpyYkb" class="btn btn-primary">
+                        <i class="fab fa-discord"></i> Unirse al Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuevo: Sección de Apelaciones -->
+    <section id="apelaciones" class="section">
+        <div class="container">
+            <h2 class="section-title">Sistema de Apelaciones</h2>
+            <div class="grid">
+                <!-- Apelación de Baneos -->
+                <div class="card appeal-card">
+                    <div class="card-icon"><i class="fas fa-ban"></i></div>
+                    <h3 class="card-title">Apelación de Baneos</h3>
+                    <p class="card-description">Si has sido baneado, sigue estos pasos:</p>
+                    <ol class="appeal-steps">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            Envía un correo a: <strong>almightystudios17@gmail.com</strong>
+                        </li>
+                        <li>
+                            <i class="fas fa-list-alt"></i>
+                            Incluye el siguiente formato:
+                            <ul class="format-list">
+                                <li>📋 Nombre Discord</li>
+                                <li>🎮 Nombre Roblox</li>
+                                <li>❌ Razón del baneo</li>
+                                <li>📝 Razón de la apelación</li>
+                                <li>🔍 Pruebas (videos/fotos)</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <a href="mailto:almightystudios17@gmail.com" class="btn btn-primary appeal-btn">
+                        <i class="fas fa-envelope"></i> Enviar Apelación
+                    </a>
+                </div>
+
+                <!-- Apelación de Sanciones -->
+                <div class="card appeal-card">
+                    <div class="card-icon"><i class="fas fa-gavel"></i></div>
+                    <h3 class="card-title">Apelación de Sanciones</h3>
+                    <p class="card-description">Para apelar una sanción, sigue estos pasos:</p>
+                    <ol class="appeal-steps">
+                        <li>
+                            <i class="fab fa-discord"></i>
+                            Ingresa al canal de soporte en Discord
+                        </li>
+                        <li>
+                            <i class="fas fa-ticket-alt"></i>
+                            Abre un ticket de ayuda general
+                        </li>
+                        <li>
+                            <i class="fas fa-list-alt"></i>
+                            Proporciona:
+                            <ul class="format-list">
+                                <li>⚠️ Razón de la sanción</li>
+                                <li>📝 Razón de la apelación</li>
+                                <li>🔍 Pruebas (videos/fotos)</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <a href="https://discord.com/channels/1319565906401034240/1319565906883641352" class="btn btn-primary appeal-btn" target="_blank">
+                        <i class="fab fa-discord"></i> Abrir Ticket
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mantener solo la navegación suave y la animación de la Dynamic Island
+        const dynamicIsland = document.querySelector('.dynamic-island');
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Dynamic Island animation
+        dynamicIsland.addEventListener('mouseenter', () => {
+            dynamicIsland.style.transform = 'translateX(-50%) scale(1.05)';
+        });
+
+        dynamicIsland.addEventListener('mouseleave', () => {
+            dynamicIsland.style.transform = 'translateX(-50%) scale(1)';
+        });
+    </script>
+    <script src="js/document.js"></script>
+</body>
+</html>
+

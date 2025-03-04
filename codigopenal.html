@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Penal - FloridaRP</title>
+    <link rel="icon" href="imgs/FloridaRp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="codigopenal.html" class="nav-link">
+                <i class="fas fa-gavel"></i>
+                <span>Código Penal</span>
+            </a>
+            <a href="agencia.html" class="nav-link">
+                <i class="fas fa-car"></i>
+                <span>Agencia</span>
+            </a>
+            <a href="normativas.html" class="nav-link">
+                <i class="fas fa-book"></i>
+                <span>Normativas</span>
+            </a>
+            <a href="https://discord.gg/vUVZqpyYkb" class="nav-link discord-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Quieres Unirte?</span>
+            </a>
+        </div>
+    </nav>
+<br>
+<br>
+    <section class="hero small-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>CÓDIGO PENAL</h1>
+                <p>Sistema de multas y sanciones de FloridaRP</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido del Código Penal -->
+    <section class="codigo-penal-page">
+        <div class="container">
+            <!-- Buscador -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchArticles" placeholder="Buscar artículos...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Todos</button>
+                    <button class="filter-btn" data-category="transito">Infracciones de Tránsito</button>
+                    <button class="filter-btn" data-category="vehicular">Infracciones Vehiculares</button>
+                    <button class="filter-btn" data-category="delitos-vehiculares">Delitos Vehiculares</button>
+                    <button class="filter-btn" data-category="armas">Delitos con Armas</button>
+                    <button class="filter-btn" data-category="propiedad">Contra la Propiedad</button>
+                    <button class="filter-btn" data-category="autoridad">Contra la Autoridad</button>
+                    <button class="filter-btn" data-category="graves">Delitos Graves</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Artículos -->
+            <div class="penal-code-container">
+                <div class="articles-table">
+                    <!-- Las tablas se generarán dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/codigopenal.js"></script>
+</body>
+</html>
