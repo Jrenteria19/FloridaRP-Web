@@ -6,7 +6,7 @@ const DISCORD_SERVER_ID = '1319565906401034240';
 
 document.addEventListener('DOMContentLoaded', function() {
     // URL del script de Google Apps - REEMPLAZA ESTO con tu URL después de implementar el script
-    const SHEET_URL = 'TU_URL_DE_GOOGLE_SCRIPT';
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx-y_91vnXrIJdvJaC82Qw-_q1jLVRaCnjJ4BaX-BGW23Zzs0UJL0jwRkdR3E58QAM8yg/exec';
     const form = document.querySelector('.cedula-form');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
