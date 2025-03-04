@@ -1,0 +1,9 @@
+{
+  "name": "floridarp-web",
+  "version": "1.0.0",
+  "dependencies": {
+    "mysql2": "^2.3.3",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0"
+  }
+}

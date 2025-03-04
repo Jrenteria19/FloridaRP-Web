@@ -1,6 +1,7 @@
 [build]
   publish = "/"
-  command = "# no command"
+  functions = "functions"
+  command = "npm install"
 
 [[redirects]]
   from = "/*"
@@ -13,5 +14,4 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
     Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept"
-    Access-Control-Max-Age = "2592000"
     Cache-Control = "public, max-age=0, must-revalidate"

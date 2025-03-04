@@ -154,48 +154,50 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         log('Iniciando envío', 'Formulario sometido');
 
+        if (!validarFormulario()) {
+            return;
+        }
+
         try {
-            // Crear objeto de datos estructurado
+            showNotification('Preparando datos...', true);
+            
             const datos = {
-                timestamp: new Date().toISOString(),
-                nombres: document.getElementById('nombres').value,
-                apellidos: document.getElementById('apellidos').value,
+                nombres: document.getElementById('nombres').value.trim(),
+                apellidos: document.getElementById('apellidos').value.trim(),
                 nacionalidad: document.getElementById('nacionalidad').value,
                 fechaNacimiento: fechaNacimientoInput.value,
-                lugarNacimiento: document.getElementById('lugarNacimiento').value,
+                lugarNacimiento: document.getElementById('lugarNacimiento').value.trim(),
                 sexo: document.getElementById('sexo').value,
-                discordUser: discordUserInput.value,
-                password: passwordInput.value,
-                fotoPersonaje: preview ? preview.src : ''
+                discordUser: discordUserInput.value.trim(),
+                password: passwordInput.value
             };
 
             log('Datos preparados', datos);
-            showNotification('Enviando datos a Google Sheets...', true);
+            showNotification('Enviando datos...', true);
 
-            const response = await fetch(SHEET_URL, {
+            const response = await fetch('/.netlify/functions/registro', {
                 method: 'POST',
-                mode: 'no-cors', // Importante para CORS
                 headers: {
-                    'Content-Type': 'text/plain;charset=utf-8', // Cambiado para mejor compatibilidad
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(datos)
             });
 
-            log('Respuesta del servidor', 'Enviado correctamente');
-            showNotification('✅ Datos enviados correctamente', true);
+            const result = await response.json();
 
-            // Esperar confirmación
-            setTimeout(() => {
-                showNotification('✅ Registro completado. Redirigiendo...', true);
+            if (result.success) {
+                showNotification('✅ Registro completado exitosamente', true);
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
-            }, 3000);
+            } else {
+                throw new Error(result.error);
+            }
 
         } catch (error) {
             console.error('Error:', error);
             log('Error en el envío', error);
-            showNotification('❌ Error: No se pudo completar el registro', false);
+            showNotification('❌ Error: ' + error.message, false);
         }
     });
 
