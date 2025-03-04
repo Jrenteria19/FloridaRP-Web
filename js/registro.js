@@ -1,11 +1,7 @@
-import { insertCiudadano } from './db.js';
-
-// Configuración de Discord (deberás reemplazar estos valores)
-const DISCORD_BOT_TOKEN = '1276412652318494765';
-const DISCORD_SERVER_ID = '1319565906401034240';
+// Eliminar la línea de importación
+// const { insertCiudadano } = require('./db.js');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // URL del script de Google Apps - REEMPLAZA ESTO con tu URL después de implementar el script
     const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx-y_91vnXrIJdvJaC82Qw-_q1jLVRaCnjJ4BaX-BGW23Zzs0UJL0jwRkdR3E58QAM8yg/exec';
     const form = document.querySelector('.cedula-form');
     const passwordInput = document.getElementById('password');
@@ -149,39 +145,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejador del envío del formulario
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-
-        // Validar el formulario
-        if (!validarFormulario()) {
-            return;
-        }
-
-        // Mostrar mensaje de carga
-        showNotification('Enviando registro...', true);
-
-        // Crear objeto con los datos del formulario
-        const formData = {
-            nombres: document.getElementById('nombres').value,
-            apellidos: document.getElementById('apellidos').value,
-            nacionalidad: document.getElementById('nacionalidad').value,
-            fotoPersonaje: preview.src,
-            fechaNacimiento: document.getElementById('fechaNacimiento').value,
-            lugarNacimiento: document.getElementById('lugarNacimiento').value,
-            sexo: document.getElementById('sexo').value,
-            discordUser: document.getElementById('discordUser').value,
-            password: document.getElementById('password').value
-        };
+        showNotification('Enviando datos...', true);
 
         try {
+            const formData = {
+                nombres: document.getElementById('nombres').value,
+                apellidos: document.getElementById('apellidos').value,
+                nacionalidad: document.getElementById('nacionalidad').value,
+                fechaNacimiento: fechaNacimientoInput.value,
+                lugarNacimiento: document.getElementById('lugarNacimiento').value,
+                sexo: document.getElementById('sexo').value,
+                discordUser: discordUserInput.value,
+                password: passwordInput.value,
+                timestamp: new Date().toISOString()
+            };
+
             const response = await fetch(SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             });
 
-            showNotification('¡Registro completado! Tus datos se han guardado en el sistema.', true);
+            showNotification('✅ Registro completado exitosamente', true);
             
             // Esperar 2 segundos antes de redireccionar
             setTimeout(() => {
@@ -191,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } catch (error) {
             console.error('Error:', error);
-            showNotification('Error al procesar el registro. Por favor, intenta nuevamente.', false);
+            showNotification('❌ Error al registrar. Por favor, intenta nuevamente.', false);
         }
     });
 
