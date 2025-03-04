@@ -1,19 +1,42 @@
-const pool = require('./db');
+const { pool, testConnection } = require('./db');
 const bcrypt = require('bcryptjs');
 
-exports.handler = async (event) => {
+exports.handler = async (event, context) => {
+  // Habilitar logs detallados
+  console.log('Iniciando función de registro');
+  
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Método no permitido' };
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Método no permitido' })
+    };
   }
 
   try {
-    const data = JSON.parse(event.body);
-    const hashedPassword = await bcrypt.hash(data.password, 10);
+    // Probar conexión
+    const isConnected = await testConnection();
+    if (!isConnected) {
+      throw new Error('No se pudo conectar a la base de datos');
+    }
 
-    const connection = await pool.getConnection();
+    const data = JSON.parse(event.body);
+    console.log('Datos recibidos:', data);
+
+    // Validar datos requeridos
+    const requiredFields = ['nombres', 'apellidos', 'nacionalidad', 'fechaNacimiento', 
+                          'lugarNacimiento', 'sexo', 'discordUser', 'password'];
     
+    for (const field of requiredFields) {
+      if (!data[field]) {
+        throw new Error(`Campo requerido faltante: ${field}`);
+      }
+    }
+
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const connection = await pool.getConnection();
+
     try {
-      await connection.query(
+      const [result] = await connection.query(
         `INSERT INTO ciudadanos (
           nombres, 
           apellidos, 
@@ -37,18 +60,34 @@ exports.handler = async (event) => {
         ]
       );
 
+      console.log('Registro exitoso:', result);
+
       return {
         statusCode: 200,
-        body: JSON.stringify({ success: true, message: 'Registro completado' })
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          success: true,
+          message: 'Registro completado exitosamente'
+        })
       };
+
     } finally {
       connection.release();
     }
+
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error detallado:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, error: 'Error en el registro' })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        success: false,
+        error: error.message || 'Error en el registro'
+      })
     };
   }
 };
