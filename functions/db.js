@@ -17,6 +17,35 @@ const pool = mysql.createPool({
   keepAliveInitialDelay: 0
 });
 
+const createConnection = async () => {
+  try {
+    console.log('Intentando conectar a TiDB...');
+    
+    const connection = await mysql.createConnection({
+      host: process.env.TIDB_HOST,
+      port: parseInt(process.env.TIDB_PORT),
+      user: process.env.TIDB_USER,
+      password: process.env.TIDB_PASSWORD,
+      database: process.env.TIDB_DATABASE,
+      ssl: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
+      }
+    });
+
+    console.log('Conexión exitosa a TiDB');
+    return connection;
+
+  } catch (error) {
+    console.error('Error de conexión:', {
+      message: error.message,
+      code: error.code,
+      errno: error.errno
+    });
+    throw new Error(`Error de conexión a la base de datos: ${error.message}`);
+  }
+};
+
 // Función para probar la conexión
 const testConnection = async () => {
   try {
@@ -40,4 +69,4 @@ const testConnection = async () => {
   }
 };
 
-module.exports = { pool, testConnection };
+module.exports = { pool, testConnection, createConnection };

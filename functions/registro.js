@@ -2,9 +2,14 @@ const { pool, testConnection } = require('./db');
 const bcrypt = require('bcryptjs');
 
 exports.handler = async (event, context) => {
-  // Habilitar logs detallados
   console.log('Iniciando función de registro');
-  
+  console.log('Verificando variables de entorno:', {
+    hostPresente: !!process.env.TIDB_HOST,
+    portPresente: !!process.env.TIDB_PORT,
+    userPresente: !!process.env.TIDB_USER,
+    dbPresente: !!process.env.TIDB_DATABASE
+  });
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -13,10 +18,10 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Probar conexión
+    console.log('Probando conexión a la base de datos...');
     const isConnected = await testConnection();
     if (!isConnected) {
-      throw new Error('No se pudo conectar a la base de datos');
+      throw new Error('Error de conexión a la base de datos. Verifica las credenciales.');
     }
 
     const data = JSON.parse(event.body);
@@ -78,15 +83,22 @@ exports.handler = async (event, context) => {
     }
 
   } catch (error) {
-    console.error('Error detallado:', error);
+    console.error('Error completo:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    });
+    
     return {
       statusCode: 500,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
         success: false,
-        error: error.message || 'Error en el registro'
+        error: error.message,
+        details: process.env.NODE_ENV === 'development' ? error.stack : undefined
       })
     };
   }
