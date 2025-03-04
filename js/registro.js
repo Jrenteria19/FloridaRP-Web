@@ -155,40 +155,47 @@ document.addEventListener('DOMContentLoaded', function() {
         log('Iniciando envío', 'Formulario sometido');
 
         try {
-            const formData = new FormData(form);
-            const jsonData = {};
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });
+            // Crear objeto de datos estructurado
+            const datos = {
+                timestamp: new Date().toISOString(),
+                nombres: document.getElementById('nombres').value,
+                apellidos: document.getElementById('apellidos').value,
+                nacionalidad: document.getElementById('nacionalidad').value,
+                fechaNacimiento: fechaNacimientoInput.value,
+                lugarNacimiento: document.getElementById('lugarNacimiento').value,
+                sexo: document.getElementById('sexo').value,
+                discordUser: discordUserInput.value,
+                password: passwordInput.value,
+                fotoPersonaje: preview ? preview.src : ''
+            };
 
-            log('Datos preparados', jsonData);
-            showNotification('Enviando datos...', true);
+            log('Datos preparados', datos);
+            showNotification('Enviando datos a Google Sheets...', true);
 
             const response = await fetch(SHEET_URL, {
                 method: 'POST',
-                mode: 'no-cors',
+                mode: 'no-cors', // Importante para CORS
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain;charset=utf-8', // Cambiado para mejor compatibilidad
                 },
-                body: JSON.stringify(jsonData)
+                body: JSON.stringify(datos)
             });
 
-            log('Respuesta recibida', 'Esperando confirmación');
-            
-            // Esperar 5 segundos para dar tiempo a Google Sheets
+            log('Respuesta del servidor', 'Enviado correctamente');
+            showNotification('✅ Datos enviados correctamente', true);
+
+            // Esperar confirmación
             setTimeout(() => {
-                showNotification('✅ Datos enviados. Verifica en la hoja de cálculo.', true);
-                log('Proceso completado', 'Redirigiendo...');
-                
+                showNotification('✅ Registro completado. Redirigiendo...', true);
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
-            }, 5000);
+            }, 3000);
 
         } catch (error) {
-            console.error('Error en el envío:', error);
-            showNotification('❌ Error: ' + error.message, false);
-            log('Error detectado', error);
+            console.error('Error:', error);
+            log('Error en el envío', error);
+            showNotification('❌ Error: No se pudo completar el registro', false);
         }
     });
 
